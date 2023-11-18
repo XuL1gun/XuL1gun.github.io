@@ -12,7 +12,7 @@
     <header class="header">
             <div class="container">
                 <div class="header_body">
-                    <a href="main.html" class="navbar-brand">Кубик в кубе<img src="img/icon.ico"></a>
+                    <a href="index.html" class="navbar-brand">Кубик в кубе<img src="img/icon.ico"></a>
                     <div class="header_burger">
                         <span></span> 
                     </div>
@@ -83,6 +83,18 @@
             </div>
 
             <div class="Products">
+                <div class="search">
+                    <select name="typeSorting" id="typeSorting">
+                        <option value="usually">По умолчанию</option>
+                        <option value="increase">По возрастанию</option>
+                        <option value="decrease">По убыванию</option>
+                    </select>
+
+                    <form>
+                      <input type="text" placeholder="Искать здесь...">
+                      <button type="submit"><img src="img/zoom.png"></button>
+                    </form>
+                </div>                    
                 <ul id="product_list"></ul>
             </div>
         </section>

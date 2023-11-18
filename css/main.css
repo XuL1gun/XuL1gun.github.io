@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
-
+*{
+  -webkit-tap-highlight-color: transparent;
+}
 
 /*Стилизация шапки*/
 .header{
@@ -122,6 +124,49 @@ main{
   margin: 10px 0;
   padding: 10px;
   font-size: 20px;
+}
+
+/*Строка поиска товаров*/
+.search{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 20px;
+}
+.search:after {content:""; clear:both; display:table}
+.search form {
+  width: 100%;
+  float: right;
+  position: relative;
+  margin-left: 20px;
+}
+.search input {
+  width: 96%;
+  height: 42px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px solid  #800080;
+  outline: none;
+  transition: .3s linear;
+}
+.search form button {
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 2%;
+  cursor: pointer;
+}
+
+.search button img{
+  width: 25px;
+}
+/*Конец настройки поиска
+Поле сортировки товаров*/
+#typeSorting{
+  padding-left: 20px;
+  border-radius: 42px;
 }
 
 .Products ul{
@@ -389,7 +434,7 @@ address{
   input::-moz-placeholder                {text-indent: 0px;   transition: text-indent 0.5s ease;}
   input:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 0.5s ease;}
   input:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 0.5s ease;}
-  input:focus::-webkit-input-placeholder {text-indent: 500px; transition: text-indent 0.5s ease;}
+  input:focus::-webkit-input-placeholder {text-indent: 900px; transition: text-indent 0.5s ease;}
   input:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 0.5s ease;}
   input:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 0.5s ease;}
   input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 0.5s ease;}
@@ -467,6 +512,11 @@ address{
   .Catalog ul li{
     font-size: 14px;
     margin: 0px 20px 0px 0px;
+  }
+
+  .search{
+    margin-left: 0;
+    margin-top: 10px;
   }
 
   .Products ul{

@@ -33,7 +33,7 @@ function changeButton(button) {
     }
     else{
         button.style.background = 'grey';
-        button.innerHTML = 'Товар добавлен в корзину';
+        button.innerHTML = '<span>Товар добавлен в корзину</span>';
     }
   }
 

@@ -67,6 +67,8 @@ var cart = {
     }
 }
 
+var sortedCart = Object.assign({}, cart);
+
 var special = {
     "66666": {
         "name": "Настольная игра Шакал: Остров сокровищ",
@@ -100,20 +102,21 @@ function loadGoods(){
     $('.species').html(out);
     out = '';
 
-    for (var key in cart){
+    for (var key in sortedCart){
         out += '<li class="pic-container">';
-        out += '<a href="'+cart[key].link+'">';
-        out += '<img src="'+cart[key].image+'" alt="Игрушки" width="200" height="200">';
+        out += '<a href="'+sortedCart[key].link+'">';
+        out += '<img src="'+sortedCart[key].image+'" alt="Игрушки" width="200" height="200">';
         out += '</a>';
         out += '<div class="Inform">';
-        out += '<p>'+cart[key]['name']+'</p>';
+        out += '<p>'+sortedCart[key]['name']+'</p>';
         out += '<div class="toy">';
-        out += '<p><b>'+toCurrency(cart[key]['cost'])+'</b></p>'
+        out += '<p><b>'+toCurrency(sortedCart[key]['cost'])+'</b></p>'
         out += '<button data-art="'+key+'" class="buy" onclick="changeButtonColor(this)"><img src="img/basket.png"></button>';
         out += '</div>';
         out += '</div>';
         out += '</li>';
     }
+
     $('#product_list').html(out);
     $('button.buy').click();
     $('button.buy').on('click', addToCart);
@@ -150,3 +153,47 @@ function checkGoods(){
     if (localStorage.getItem('basket') != null)
         basket = JSON.parse(localStorage.getItem('basket'))
   }
+
+var dropdowList = document.getElementById("typeSorting");
+function onChange() {
+  var value = dropdowList.value;
+
+  if (value === "increase"){
+    sortCartByCost(true);
+  }
+  else if(value === "decrease"){
+    sortCartByCost(false);
+  }
+  else{
+    sortedCart = Object.assign({}, cart);
+  }
+
+  loadGoods();
+}
+
+function sortCartByCost(flag) {
+    var keyArray = Object.keys(sortedCart);
+    let Cost;
+    for (let i = 0; i < keyArray.length - 1; i++){
+        Cost = keyArray[i];
+        for (let j = i + 1; j < keyArray.length; j++){
+            if (flag){
+                if (sortedCart[Cost].cost > sortedCart[keyArray[j]].cost)
+                    Cost = keyArray[j];
+            }else{
+                if (sortedCart[Cost].cost < sortedCart[keyArray[j]].cost)
+                    Cost = keyArray[j];
+            }
+        }
+        
+        if (Cost != keyArray[i])
+            swap(sortedCart, Cost, keyArray[i]);
+    }
+  }
+
+function swap(sortedCart, key1, key2){
+    [sortedCart[key1], sortedCart[key2]] = [sortedCart[key2], sortedCart[key1]]
+}
+
+dropdowList.onchange = onChange;
+onChange();

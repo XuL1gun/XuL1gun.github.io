@@ -1,3 +1,7 @@
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
 /*Стилизация шапки*/
 .header{
     top: 0;
