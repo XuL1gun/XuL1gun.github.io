@@ -524,7 +524,7 @@ address{
   }
 
   #typeSorting{
-    padding-left: 10px;
+    padding-left: 5px;
   }
 
   .Products ul{
@@ -671,7 +671,11 @@ address{
   }
 
   .search form {
-    margin-left: 0px;
+    margin-left: 3px;
+  }
+
+  #typeSorting{
+    padding-left: 2px;
   }
 
   #typeSorting{
