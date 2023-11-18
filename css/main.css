@@ -519,6 +519,14 @@ address{
     margin-top: 10px;
   }
 
+  .search form {
+    margin-left: 10px;
+  }
+
+  #typeSorting{
+    padding-left: 10px;
+  }
+
   .Products ul{
     padding-inline-start: 0;
   }
@@ -660,6 +668,14 @@ address{
 
   main{
     padding: 0;
+  }
+
+  .search form {
+    margin-left: 5px;
+  }
+
+  #typeSorting{
+    padding-left: 5px;
   }
 
   .Products ul{
