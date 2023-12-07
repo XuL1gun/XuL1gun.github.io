@@ -23,6 +23,7 @@ function changeButtonColor1(button) {
   }
 
 $('document').ready(function(){
+    checkLocalStirage();
     checkGoods();
     loadGoods();
 });
@@ -67,7 +68,14 @@ var cart = {
     }
 }
 
-var sortedCart = Object.assign({}, cart);
+var sortedCart;
+
+function checkLocalStirage(){
+    if (localStorage.getItem('sortedCart') != null)
+        sortedCart = JSON.parse(localStorage.getItem('sortedCart'))
+    else
+        sortedCart = Object.assign({}, cart);
+}
 
 var special = {
     "66666": {
@@ -103,7 +111,7 @@ function loadGoods(){
     out = '';
 
     for (var key in sortedCart){
-        out += '<li class="pic-container">';
+        out += '<li class="pic-container" draggable="true">';
         out += '<a href="'+sortedCart[key].link+'">';
         out += '<img src="'+sortedCart[key].image+'" alt="Игрушки" width="200" height="200">';
         out += '</a>';
@@ -155,6 +163,7 @@ function checkGoods(){
   }
 
 var dropdowList = document.getElementById("typeSorting");
+
 function onChange() {
   var value = dropdowList.value;
 
@@ -168,6 +177,7 @@ function onChange() {
     sortedCart = Object.assign({}, cart);
   }
 
+  localStorage.setItem('sortedCart', JSON.stringify(sortedCart));
   loadGoods();
 }
 
@@ -197,3 +207,54 @@ function swap(sortedCart, key1, key2){
 
 dropdowList.onchange = onChange;
 onChange();
+
+/*Драгон дроп*/
+
+var total = 0;
+var elem;
+  
+  const dragAndDrop = () => {
+
+    $(document).ready(function(){
+        const items = document.querySelectorAll('.pic-container');
+
+        items.forEach((item) =>{
+            item.addEventListener("dragstart", dragStart);
+        })
+
+        cell = $(".basket")
+
+        cell.on("dragover", dragOver)
+        cell.on("drop", dragDrop)
+    });
+
+  };
+  
+  function dragStart(){
+    elem = this
+  }
+
+  function dragOver(evt){
+    evt.preventDefault();
+  }
+
+  function dragDrop(){
+    var childElement = $(elem).find(".buy");
+    addToCartDragonDrop(childElement);
+  }
+
+  function addToCartDragonDrop(product){
+    var articul = $(product).attr('data-art')
+
+    if (articul == undefined)
+        return;
+
+    if (basket[articul] == undefined){
+        basket[articul] = 1;
+    }
+
+    localStorage.setItem('basket', JSON.stringify(basket));
+    loadGoods();
+}
+
+  dragAndDrop();
