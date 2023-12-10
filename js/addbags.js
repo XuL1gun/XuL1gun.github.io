@@ -8,7 +8,50 @@ function toCurrency(num) {
 }
 
 //Список товаров
-var cart = JSON.parse(localStorage.getItem('sortedCart'));
+var cart = {
+  "11111": {
+      "name": "Детский паровозик",
+      "cost": 1499,
+      "image": "img/train.jpg",
+      "link": "product_page.html",
+      "data-art": "11111"
+  },
+  "22222": {
+      "name": "Cортер забавные фигурки",
+      "cost": 2999,
+      "image": "img/sorter.jpg",
+      "link": "product_page.html",
+      "data-art": "22222"
+  },
+  "33333": {
+      "name": "Кран из дерева",
+      "cost": 799,
+      "image": "img/crane.jpg",
+      "link": "product_page.html",
+      "data-art": "33333"
+  },
+  "44444": {
+      "name": "Квадроцикл Wincars",
+      "cost": 999,
+      "image": "img/wincars.jpg",
+      "link": "product_page.html",
+      "data-art": "44444"
+  },
+  "55555": {
+      "name": "Мстители Война бесконечности ...",
+      "cost": 1999,
+      "image": "img/lego.jpg",
+      "link": "product_page.html",
+      "data-art": "55555"
+  },
+  "66666": {
+      "name": "Настольная игра Шакал: Остров сокровищ",
+      "cost": 2799,
+      "image": "img/shakal.jpg",
+      "link": "product_page.html",
+      "data-art": "66666"
+  }
+}/*JSON.parse(localStorage.getItem('sortedCart'));*/
 
 var basket = {};//Корзина
 
