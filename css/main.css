@@ -9,6 +9,7 @@
   left: 0;
   width: 100%;
   z-index: 50;
+  position: fixed;
 }
 
 .header:before{
@@ -84,6 +85,7 @@
 
 /*Стилизвция главной части страницы*/
 body {
+    margin-top: 70px;
     font-family: Verdana, Helvetica, Arial, sans-serif;
     color:#7e619c; 
 }
@@ -642,13 +644,8 @@ address{
      .header_list li a{
       opacity: 1;
      }
-
-    .header{
-      position: fixed;
-    }
     
     .header:before{
-      position: fixed;
       height: 40px;
       z-index: 2;
     }
@@ -656,6 +653,10 @@ address{
     .navbar-brand{
       padding-bottom: 10px;
       z-index: 3;
+  }
+
+  body{
+    margin-top: 40px;
   }
 
   .header_body{
